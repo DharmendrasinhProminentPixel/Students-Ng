@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Students';
+  
+  routes: any[] = [
+    {label:"Home", url:"home"},
+    // {label:"Settings", url:"settings"},
+    {label:"Address Card List", url:"address-card-list"},
+  ];
 }
