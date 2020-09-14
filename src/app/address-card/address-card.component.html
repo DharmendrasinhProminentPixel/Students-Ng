@@ -1,0 +1,10 @@
+<ul style="border-style: double;">
+    <li>ID: {{user.id | square}}</li>
+    <li>Name: {{user.name | uppercase}}</li>
+    <li *ngIf="user.phone && user.phone.length > 0">
+        Phone:
+        <ul>
+            <li *ngFor="let phoneNo of user.phone">{{phoneNo}}</li>
+        </ul>
+    </li>
+</ul>
