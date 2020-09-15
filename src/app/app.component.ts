@@ -10,7 +10,7 @@ export class AppComponent {
   
   routes: any[] = [
     {label:"Home", url:"home"},
-    // {label:"Settings", url:"settings"},
+    {label:"Add Address Card", url:"address-card-form"},
     {label:"Address Card List", url:"address-card-list"},
   ];
 }
