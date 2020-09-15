@@ -14,8 +14,12 @@ export class UserService {
   }
 
   public getUsers():User[]{
-    // if(this.users.length==0)
-    //   this.ngOnInit();
     return this.users;
+  }
+
+  public addUser(user:User):void{
+    if(user.id==null)
+      user.id = this.users.length+1;
+    this.users.push(user);
   }
 }

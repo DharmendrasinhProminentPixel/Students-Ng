@@ -1,0 +1,30 @@
+<div class="row">
+    <h4 class="col-sm-12">Register</h4>
+    <div *ngIf="message != null" class="alert alert-info col-sm-12">{{message}}</div>
+
+    <form [formGroup]="form" #userForm="ngForm" (ngSubmit)="form.valid && submit(userForm)" novalidate>
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" formControlName="name" id="name">
+            <div *ngIf="c.name.touched && c.name.invalid" class="alert alert-danger">
+                <div *ngIf="c.name.errors.required">Name is required !</div>
+                <div *ngIf="c.name.errors.maxlength">Minimum 15 characters !</div>
+                <div *ngIf="c.name.errors.pattern">Invalid pattern, allowed (a-zA-Z )!</div>
+            </div>
+            <!--
+            {{this.errMsg.name}}
+            <input type="text" name="name" class="form-control" [(ngModel)]="user.name" required>
+                <div *ngIf="c.name.touched && c.name.invalid" class="alert alert-danger">
+                    <div *ngIf="c.name.errors.required">Name is required !</div>
+                    <div *ngIf="c.name.errors.maxlength">Minimum 15_ characters !</div>
+                    <div *ngIf="c.name.errors.pattern">Invalid pattern !</div>
+                </div>
+             -->
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-block btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
