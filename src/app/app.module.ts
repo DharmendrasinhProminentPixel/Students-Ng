@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddressCardComponent } from './address-card/address-card.component';
@@ -33,18 +32,14 @@ export function TranslationLoaderFactory(http:HttpClient){
     SquarePipe,
     ResToPipe,
     AddressCardFormComponent,
-<<<<<<< HEAD
     MyI18nComponent,
     TwoWayDataBindingComponent,
     TwoWayDataBindingPageComponent,
-=======
->>>>>>> 4c7b6127045a63b8b9c1a5b80f63fbbb0dd5abb4
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     BrowserModule,
-<<<<<<< HEAD
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -56,10 +51,6 @@ export function TranslationLoaderFactory(http:HttpClient){
         deps: [HttpClient]
       }
     })
-=======
-    FormsModule,
-    ReactiveFormsModule
->>>>>>> 4c7b6127045a63b8b9c1a5b80f63fbbb0dd5abb4
   ],
   providers: [],
   bootstrap: [AppComponent]
