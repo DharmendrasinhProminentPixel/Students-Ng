@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from '../user.modal';
+import { User } from 'src/app/user.modal';
 
 @Component({
   selector: 'app-address-card',

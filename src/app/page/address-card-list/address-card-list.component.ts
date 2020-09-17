@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../service/user.service';
-import { User } from '../user.modal';
+import { UserService } from 'src/app/service/user.service';
+import { User } from 'src/app/user.modal';
 
 @Component({
   selector: 'app-address-card-list',

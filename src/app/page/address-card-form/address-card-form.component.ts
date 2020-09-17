@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { $ } from 'protractor';
-import { UserService } from '../service/user.service';
-//import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from '../user.modal';
+import { UserService } from 'src/app/service/user.service';
+import { User } from 'src/app/user.modal';
 
 
 @Component({
