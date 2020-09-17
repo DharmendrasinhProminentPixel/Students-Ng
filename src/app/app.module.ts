@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { SquarePipe } from './pipe/square.pipe';
 import { ResToPipe } from './pipe/res-to.pipe';
+<<<<<<< HEAD
 import { AddressCardFormComponent } from './address-card-form/address-card-form.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +23,10 @@ import { TwoWayDataBindingPageComponent } from './two-way-data-binding-page/two-
 export function TranslationLoaderFactory(http:HttpClient){
   return new TranslateHttpLoader(http);
 }
+=======
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddressCardFormComponent } from './address-card-form/address-card-form.component';
+>>>>>>> 4c7b6127045a63b8b9c1a5b80f63fbbb0dd5abb4
 
 @NgModule({
   declarations: [
@@ -33,14 +38,18 @@ export function TranslationLoaderFactory(http:HttpClient){
     SquarePipe,
     ResToPipe,
     AddressCardFormComponent,
+<<<<<<< HEAD
     MyI18nComponent,
     TwoWayDataBindingComponent,
     TwoWayDataBindingPageComponent,
+=======
+>>>>>>> 4c7b6127045a63b8b9c1a5b80f63fbbb0dd5abb4
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     BrowserModule,
+<<<<<<< HEAD
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -52,6 +61,10 @@ export function TranslationLoaderFactory(http:HttpClient){
         deps: [HttpClient]
       }
     })
+=======
+    FormsModule,
+    ReactiveFormsModule
+>>>>>>> 4c7b6127045a63b8b9c1a5b80f63fbbb0dd5abb4
   ],
   providers: [],
   bootstrap: [AppComponent]
