@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { APP_ROUTING_MODULE } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddressCardComponent } from './page/address-card/address-card.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,12 +17,18 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MyI18nComponent } from './page/my-i18n/my-i18n.component';
 import { TwoWayDataBindingPageComponent } from './page/two-way-data-binding-page/two-way-data-binding-page.component';
 import { TwoWayDataBindingComponent } from './page/two-way-data-binding-page/two-way-data-binding/two-way-data-binding.component';
-
-export function TranslationLoaderFactory(http:HttpClient){
-  return new TranslateHttpLoader(http);
-}
+import { APP_TRANSLATE_MODULE } from './app-translate.module';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    APP_ROUTING_MODULE,
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    APP_TRANSLATE_MODULE
+  ],
   declarations: [
     AppComponent,
     AddressCardComponent,
@@ -35,22 +41,6 @@ export function TranslationLoaderFactory(http:HttpClient){
     MyI18nComponent,
     TwoWayDataBindingComponent,
     TwoWayDataBindingPageComponent,
-  ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: TranslationLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
   ],
   providers: [],
   bootstrap: [AppComponent]
