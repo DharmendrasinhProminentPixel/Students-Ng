@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { APP_ROUTING_MODULE } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddressCardComponent } from './page/address-card/address-card.component';
 import { HeaderComponent } from './header/header.component';
@@ -10,14 +9,13 @@ import { HomeComponent } from './page/home/home.component';
 import { SquarePipe } from './pipe/square.pipe';
 import { ResToPipe } from './pipe/res-to.pipe';
 import { AddressCardFormComponent } from './page/address-card-form/address-card-form.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MyI18nComponent } from './page/my-i18n/my-i18n.component';
 import { TwoWayDataBindingPageComponent } from './page/two-way-data-binding-page/two-way-data-binding-page.component';
 import { TwoWayDataBindingComponent } from './page/two-way-data-binding-page/two-way-data-binding/two-way-data-binding.component';
-import { APP_TRANSLATE_MODULE } from './app-translate.module';
+import { APP_ROUTING_MODULE } from './_modules/app-routing.module';
+import { APP_TRANSLATE_MODULE } from './_modules/app-translate.module';
 
 @NgModule({
   imports: [

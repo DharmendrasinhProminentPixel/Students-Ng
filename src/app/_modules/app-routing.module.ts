@@ -1,9 +1,9 @@
 import { Route, RouterModule } from '@angular/router';
-import { AddressCardFormComponent } from './page/address-card-form/address-card-form.component';
-import { AddressCardListComponent } from './page/address-card-list/address-card-list.component';
-import { HomeComponent } from './page/home/home.component';
-import { MyI18nComponent } from './page/my-i18n/my-i18n.component';
-import { TwoWayDataBindingPageComponent } from './page/two-way-data-binding-page/two-way-data-binding-page.component';
+import { AddressCardFormComponent } from '../page/address-card-form/address-card-form.component';
+import { AddressCardListComponent } from '../page/address-card-list/address-card-list.component';
+import { HomeComponent } from '../page/home/home.component';
+import { MyI18nComponent } from '../page/my-i18n/my-i18n.component';
+import { TwoWayDataBindingPageComponent } from '../page/two-way-data-binding-page/two-way-data-binding-page.component';
 
 
 export interface MyRoute extends Route {
