@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-my-i18n',
   templateUrl: './my-i18n.component.html',
-  styleUrls: ['./my-i18n.component.css']
+  // styleUrls: ['./my-i18n.component.css']
 })
 export class MyI18nComponent implements OnInit {
   // title:string="Welcome to i18n";

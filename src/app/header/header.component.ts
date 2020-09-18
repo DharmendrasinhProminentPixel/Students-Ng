@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MyRoute } from '../_modules/app-routing.module';
+import { MyRoute } from '../app.routing';
 
 @Component({
   selector: 'app-header',

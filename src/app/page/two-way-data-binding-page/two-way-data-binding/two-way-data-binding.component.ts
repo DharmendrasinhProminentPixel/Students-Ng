@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-two-way-data-binding',
   templateUrl: './two-way-data-binding.component.html',
-  styleUrls: ['./two-way-data-binding.component.css']
+  // styleUrls: ['./two-way-data-binding.component.css']
 })
 export class TwoWayDataBindingComponent {
   @Input() num:number;

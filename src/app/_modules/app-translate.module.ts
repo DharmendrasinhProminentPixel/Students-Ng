@@ -11,6 +11,6 @@ export const APP_TRANSLATE_MODULE = TranslateModule.forRoot({
     }
 });
 
-/*export*/ function TranslationLoaderFactory(http:HttpClient){
+export function TranslationLoaderFactory(http:HttpClient){
     return new TranslateHttpLoader(http);
 }

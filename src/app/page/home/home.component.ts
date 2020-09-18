@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from  'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -6,17 +6,14 @@ import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  // styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   data:string='Please click on button Load';
 
   constructor(
     private http:HttpClient
   ) {}
-
-  ngOnInit(): void {
-  }
 
   /**
    * Load data from server
@@ -32,6 +29,9 @@ export class HomeComponent implements OnInit {
         //handle error
         return of("My Custom Error handling: can not fetch data : "+err.statusText);
       }))
-      .subscribe((data:string)=>this.data=data);
+      .subscribe((data:string)=>{
+        this.data=data;
+        console.log("loaded data", data);
+      });
   }
 }

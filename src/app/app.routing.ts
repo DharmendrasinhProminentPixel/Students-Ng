@@ -1,9 +1,9 @@
 import { Route, RouterModule } from '@angular/router';
-import { AddressCardFormComponent } from '../page/address-card-form/address-card-form.component';
-import { AddressCardListComponent } from '../page/address-card-list/address-card-list.component';
-import { HomeComponent } from '../page/home/home.component';
-import { MyI18nComponent } from '../page/my-i18n/my-i18n.component';
-import { TwoWayDataBindingPageComponent } from '../page/two-way-data-binding-page/two-way-data-binding-page.component';
+import { HomeComponent } from './page/home/home.component';
+import { MyI18nComponent } from './page/my-i18n/my-i18n.component';
+import { TwoWayDataBindingPageComponent } from './page/two-way-data-binding-page/two-way-data-binding-page.component';
+import { UserFormComponent } from './page/user-form/user-form.component';
+import { UserListComponent } from './page/user-list/user-list.component';
 
 
 export interface MyRoute extends Route {
@@ -13,8 +13,8 @@ export interface MyRoute extends Route {
 
 const routes: MyRoute[] = [
   {path:'home', component:HomeComponent, label:"Dynamic HTTP"},
-  {path:'address-card-form', component:AddressCardFormComponent, label:"Address Card Form"},
-  {path:'address-card-list', component:AddressCardListComponent, label:"Address Card List" },
+  {path:'user-form', component:UserFormComponent, label:"User Form"},
+  {path:'user-list', component:UserListComponent, label:"User List" },
   {path:'my-i18n', component:MyI18nComponent, label:"I18N" },
   {path:'two-way-data-binding-page', component:TwoWayDataBindingPageComponent, label: "2 Way Data Binding" },
 

@@ -1,0 +1,69 @@
+<div class="row">
+    <h4 class="col-sm-12">Register</h4>
+    <div *ngIf="message != null" class="alert alert-info col-sm-12">{{message}}</div>
+
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+        </div>
+    
+        <div formArrayName="phone" ngClass="form-group">
+            <label>Phone</label>
+            <div *ngFor="let p of phone.controls; index as i">
+                <input type="text" [formControlName]="i"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                    >
+                <button (click)="removePhone(i)">Remove</button>
+                <div *ngIf="submitted && !!p.errors" ngClass="invalid-feedback" style="display:block;">
+                    <div *ngFor="let msg of toErrMessages(p.errors, 'Phone')">{{msg}}</div>
+                </div>
+            </div>
+        </div>
+        <p><button type="button" (click)="addPhone()">Add</button></p>
+              <!-- <div *ngFor="let phoner of f.phone">aa
+                <input type="text" formControlName="phone[]" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors.required">Phone is required</div>
+                </div>
+            </div>
+        </div>
+    -->
+
+    <!--     <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" formControlName="name" id="name">
+            <div *ngIf="c.name.touched && c.name.invalid" class="alert alert-danger">
+                <div *ngIf="c.name.errors.required">Name is required !</div>
+                <div *ngIf="c.name.errors.maxlength">Minimum 15 characters !</div>
+                <div *ngIf="c.name.errors.pattern">Invalid pattern, allowed (a-zA-Z )!</div>
+            </div>
+     -->        <!--
+            {{this.errMsg.name}}
+            <input type="text" name="name" class="form-control" [(ngModel)]="user.name" required>
+                <div *ngIf="c.name.touched && c.name.invalid" class="alert alert-danger">
+                    <div *ngIf="c.name.errors.required">Name is required !</div>
+                    <div *ngIf="c.name.errors.maxlength">Minimum 15_ characters !</div>
+                    <div *ngIf="c.name.errors.pattern">Invalid pattern !</div>
+                </div>
+             -->
+        <!-- </div>
+ -->
+<!--         <div class="form-group">
+            <button class="btn btn-block btn-primary" type="submit">Submit</button>
+        </div>
+ -->
+         <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Submit
+            </button>
+            <a routerLink="/home" class="btn btn-link">Cancel</a>
+        </div>
+        {{this.userForm.valid | json}} : {{this.userForm.value | json}}
+    </form>
+</div>

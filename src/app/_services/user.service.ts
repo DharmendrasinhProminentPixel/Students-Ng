@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from '../user.modal';
+import { Observable, Subject } from 'rxjs';
+import { User } from '../_modals';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,19 @@ export class UserService {
     return this.users;
   }
 
-  public addUser(user:User):void{
-    if(user.id==null)
-      user.id = this.users.length+1;
-    this.users.push(user);
+  public register(user:User):Observable<User>{
+    let s = new Subject<User>();
+
+    setTimeout(()=>{
+      if(user.id==null)
+        user.id = this.users.length+1;
+
+      this.users.push(user);
+
+      s.next(user);
+      // s.error("EEEE");
+    },700);
+
+    return s.asObservable();
   }
 }
