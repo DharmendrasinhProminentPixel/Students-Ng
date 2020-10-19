@@ -1,6 +1,6 @@
 <div class="row">
     <h4 class="col-sm-12">Register</h4>
-    <div *ngIf="message != null" class="alert alert-info col-sm-12">{{message}}</div>
+    <!-- <div *ngIf="message != null" class="alert alert-info col-sm-12">{{message}}</div> -->
 
     <form [formGroup]="userForm" (ngSubmit)="submit()">
         <div class="form-group">
@@ -20,19 +20,19 @@
                     >
                 <button (click)="removePhone(i)">Remove</button>
                 <div *ngIf="submitted && !!p.errors" ngClass="invalid-feedback" style="display:block;">
-                    <div *ngFor="let msg of toErrMessages(p.errors, 'Phone')">{{msg}}</div>
+                    <div *ngFor="let msg of toErrMessages(p.errors, 'phone')">{{msg}}</div>
                 </div>
             </div>
         </div>
         <p><button type="button" (click)="addPhone()">Add</button></p>
-              <!-- <div *ngFor="let phoner of f.phone">aa
-                <input type="text" formControlName="phone[]" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                    <div *ngIf="f.phone.errors.required">Phone is required</div>
-                </div>
+<!-- <div *ngFor="let phoner of f.phone">aa
+            <input type="text" formControlName="phone[]" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Phone is required</div>
             </div>
         </div>
-    -->
+    </div>
+-->
 
     <!--     <div class="form-group">
             <label>Name</label>

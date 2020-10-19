@@ -1,1 +1,2 @@
-export * from './address-card/address-card.component';
+export * from './user-card/user-card.component';
+export * from './alert/alert.component';

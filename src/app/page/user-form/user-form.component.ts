@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { UserService } from 'src/app/_services';
 import { User } from 'src/app/_modals';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/_services/alert.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   // selector: 'app-user-form',
@@ -13,18 +15,11 @@ export class UserFormComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  // @Input() 
-  //user: User = new User(0,"Dharm",[]);
-  // user : any = {name:"NNN"}; //depr
-  message: string;
- /*  form = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern("[a-zA-Z ]*")])
-  }); */
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private alertService: AlertService
   ) {
     /*
      // redirect to home if already logged in
@@ -40,9 +35,8 @@ export class UserFormComponent implements OnInit {
       name: ['', Validators.required],
       phone: this.formBuilder.array([])
     });
-    // this.form.patchValue(user)
-    // this.updateErrMsg();
-    this.setUser(new User(null, "Dharm", ['1']));
+
+    // this.setUser(new User(null, "Dharm", ['1']));
   }
 
   get phone(): FormArray {
@@ -51,7 +45,7 @@ export class UserFormComponent implements OnInit {
 
   addPhone() : FormControl{
     // let newPhone = this.formBuilder.group({ num:['',Validators.required] });
-    let newPhone = this.formBuilder.control('',[Validators.required, Validators.minLength(5)]);
+    let newPhone = this.formBuilder.control('',[Validators.required, Validators.minLength(5), Validators.pattern('\\d{10}')]);
     this.phone.push(newPhone);
     return newPhone;
   }
@@ -59,12 +53,26 @@ export class UserFormComponent implements OnInit {
     this.phone.removeAt(i);
   }
 
-  toErrMessages(errors):string[]{
+  private errMsgObj = {
+    phone: {
+      required: 'Please enter phone number',
+      pattern: 'Please enter valid mobile number (10 digits)'
+    }
+  };
+
+  toErrMessages(errors,lbl=''):string[]{
     if(errors==null) return [];
 
     let errMsgs = [];
     Object.entries(errors).forEach(pair => {
       let k = pair[0], v=pair[1];
+
+      let msg = this.errMsgObj[lbl] && this.errMsgObj[lbl][k];
+      if(msg){
+        errMsgs.push(msg);
+        return;
+      }
+
       switch(k){
         case "required": errMsgs.push('Please enter value'); break;
         case "minlength": errMsgs.push('Minimum length should '+v['requiredLength']); break;
@@ -75,11 +83,6 @@ export class UserFormComponent implements OnInit {
 
     return errMsgs;
   }
-  a(o:any){
-    // debugger;
-    console.log("A",o);
-    // return o==null ? null : o.required;
-  }
 
   public setUser(user:User){
     this.userForm.patchValue(user);
@@ -88,34 +91,6 @@ export class UserFormComponent implements OnInit {
       user.phone.forEach(n=>this.addPhone().patchValue(n));
     // this.phone.patchValue(user.phone);
   }
-
-  /*
-  errMsg:any={};
-  updateErrMsg():void{
-    Object.entries(this.form.controls).forEach((arr:any[])=>{
-      let k = arr[0];
-      let v = arr[1];
-      let c = this.form.controls[k];
-      this.errMsg[k]=this.getErrorMessage(k,v,c.errors);
-      // this.errMsg[k]=
-    });
-  }
-
-  getErrorMessage(k,v,errs):string{
-    console.log(k,v,errs);
-    return JSON.stringify(errs);
-  }
-  */
-
- /*  get c() {
-    return this.form.controls;
-  } */
-  // format(value:string, ...params: any):string{
-  //     var args = arguments;
-  //     return value.replace(/\{(\d+)\}/g, function() {
-  //         return args[arguments[1]];
-  //     });
-  // }
 
   // convenience getter for easy access to form fields
   get f() { return this.userForm.controls; }
@@ -147,16 +122,16 @@ export class UserFormComponent implements OnInit {
     // console.log(this.form.valid, this.form.value, this.form.errors);
     // debugger;
     //this.userForm.value.phone.map(o=>o.num);
-    let user = this.userForm.value;
-    user.phone = user.phone.map(o=>o.num);
-    this.userService.register(user)
+
+    this.userService.register(this.userForm.value)
+        .pipe(first())
         .subscribe(
           data=>{
-            this.message="Saved";
-            this.router.navigate(['/user-list']);
+            this.alertService.success("Successfully Saved", true);
+            this.router.navigate(['/user-list']); // '/login'
           },
           error=>{
-            this.message="Error: "+error;
+            this.alertService.error("Error: "+error);
             this.loading=false;
           }
         );

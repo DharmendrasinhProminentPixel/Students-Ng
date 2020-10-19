@@ -16,6 +16,7 @@ import { APP_ROUTING_MODULE } from './app.routing';
 import { UserCardComponent } from './_components/user-card/user-card.component';
 import { UserListComponent } from './page/user-list/user-list.component';
 import { UserFormComponent } from './page/user-form/user-form.component';
+import { AlertComponent } from './_components/alert/alert.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { UserFormComponent } from './page/user-form/user-form.component';
     MyI18nComponent,
     TwoWayDataBindingComponent,
     TwoWayDataBindingPageComponent,
+    AlertComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
