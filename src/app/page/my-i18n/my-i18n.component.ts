@@ -15,17 +15,20 @@ export class MyI18nComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   let browserLang = this.translateService.getBrowserLang();
+    let browserLang = this.translateService.getBrowserLang();
+    let langToUse = "en";
     if(this.langs.indexOf(browserLang) != -1){
-      this.translateService.setDefaultLang(browserLang);
-    } else {
-      this.translateService.setDefaultLang('en');
+      langToUse = browserLang;
     }
+
+    this.translateService.setDefaultLang(langToUse);
+    this.translateService.use(langToUse);
   }
 
   useLanguage(lang:string):void{
     // this.translateService.langs
-    this.translateService.setDefaultLang(lang);
+    // this.translateService.setDefaultLang(lang);
+    this.translateService.use(lang);
   }
 
 }
